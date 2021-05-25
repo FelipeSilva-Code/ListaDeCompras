@@ -4,9 +4,10 @@ export const MyDiv = styled.div`
   height: 108%;
   width: 97%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   margin-top: -50px;
   justify-content: space-around;
+  flex-direction: column;
 
   .lista {
     width: 100%;
@@ -35,9 +36,9 @@ export const MyDiv = styled.div`
   .valorTotal {
     display: flex;
     align-items: center;
-    padding-top: 5px;
     width: 80%;
     justify-content: space-between;
+    border-bottom: 1pt rgba(100, 90, 90, 0.3) solid;
   }
 
   .valorTotal > button {
@@ -48,9 +49,9 @@ export const MyDiv = styled.div`
     display: flex;
     align-items: center;
     cursor: pointer;
-    border-top: 1pt rgba(100, 90, 90, 0.3) solid;
-    width: 80%;
+    width: 30%;
     padding-top: 10px;
+    margin-left: -50%;
   }
 
   .addNew > h5 {
@@ -59,5 +60,23 @@ export const MyDiv = styled.div`
 
   .addNew:hover {
     color: blue;
+  }
+
+  .remover{
+      margin-top: 20px;
+      margin-left: -55%;
+      display: flex;
+
+  }
+
+  .remover > button {
+      margin-left: 10%;
+  }
+
+  .chk{
+      background-color: blue;
+      width: 5%;
+      cursor: pointer;
+      display: none;
   }
 `;

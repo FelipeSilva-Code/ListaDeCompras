@@ -24,4 +24,12 @@ export const MyMiniCard = styled.div`
   .quantidade {
     width: 15%;
   }
+
+  .iconTrash{
+      cursor: pointer;
+  }
+
+  .iconTrash:hover{
+      color: blue;
+  }
 `;
