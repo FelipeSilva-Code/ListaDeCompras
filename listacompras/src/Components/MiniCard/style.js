@@ -32,4 +32,14 @@ export const MyMiniCard = styled.div`
   .iconTrash:hover{
       color: blue;
   }
+
+  @media(max-width: 600px)
+  {
+    width: 85%;
+  }
+   @media(max-width: 500px)
+  {
+    width: 90%;
+    margin-left: -4%;
+  }
 `;

@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import PageDefault from "../../Components/PageDefault";
 import { MyDiv } from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPlus} from "@fortawesome/free-solid-svg-icons";
 import Card from "../../Components/Card/index"
 import MiniCard from "../../Components/MiniCard"
+import { jsPDF } from "jspdf";
 
 export default function ListaCompras() {
 
   const [total, setTotal] = useState(0)
   const [countItens, setCountItens] = useState(1)
  
-  const trash = <FontAwesomeIcon size="2x" icon={faTrashAlt} />;
   const add = <FontAwesomeIcon size="2x" icon={faPlus} />;
   
   
@@ -20,26 +20,13 @@ export default function ListaCompras() {
     
       const resumo = document.querySelector(".l1");
 
-      let prod = "";
-      let valor = 0;
-      let qtd = 0;
-      let id = 0;
-      let className = "";
-      let chkId = "";
-      let valueChk = false;
-
-      prod = resumo.getElementsByTagName("input")[0].value;
-      valor = resumo.getElementsByTagName("input")[1].value;
-      qtd = resumo.getElementsByTagName("input")[2].value;
-      id = resumo.getElementsByTagName("div")[0].id;
-      className = resumo.className;
-      chkId = resumo.getElementsByTagName("input")[3].id;
-      valueChk = resumo.getElementsByTagName("input")[3].checked;
+      let prod = resumo.getElementsByTagName("input")[0].value;
+      let valor = resumo.getElementsByTagName("input")[1].value;
+      let qtd = resumo.getElementsByTagName("input")[2].value;
+      let chkId = resumo.getElementsByTagName("input")[3].id;
+      let valueChk = resumo.getElementsByTagName("input")[3].checked;
       resumo.getElementsByTagName("input")[3].style.display = "flex";
       let tot = countItens + 1
-      
-      resumo.getElementsByTagName("div")[0].id = tot;
-      resumo.className = className.substring(0, 10) + " " + tot;
 
       resumo.getElementsByTagName("input")[3].id = tot;
      
@@ -56,15 +43,10 @@ export default function ListaCompras() {
       resumo.getElementsByTagName("input")[0].value = prod;
       resumo.getElementsByTagName("input")[1].value = valor;
       resumo.getElementsByTagName("input")[2].value = qtd;
-      resumo.getElementsByTagName("div")[0].id = id;
       resumo.getElementsByTagName("input")[3].id = chkId;
       resumo.getElementsByTagName("input")[3].checked = valueChk;
       resumo.getElementsByTagName("input")[3].style.display = "none";
-      resumo.className = className
 
-      //inserir no fim por ordem cada um dos divs clonados
-     
-      //addNewEventListener(novoResumo)
       resumo.parentNode.insertBefore(novoResumo, null);
       setCountItens(tot)
     };
@@ -92,10 +74,9 @@ export default function ListaCompras() {
         
       }
 
-      let tot = countItens
-      setCountItens(tot - 1)
-      console.log("chegou aqui");
-    }
+        let tot = countItens
+        setCountItens(tot - 1)
+     }
      
   
 
@@ -117,6 +98,45 @@ export default function ListaCompras() {
       setTotal(valorFinal); 
     }
 
+    /*const gerarPdf = () => 
+    {
+      const doc = new jsPDF();
+
+      const list = document.getElementsByTagName("ul")[0]
+                           .getElementsByTagName("li");
+
+      let text = "NOME DA COMPRA" + String.fromCharCode(13);
+      let nomeProduto = "";
+      let valor = 0;
+      let qtd = 0;
+
+      let length = list.length;
+
+      for (let i = 0; i < length; i++) {
+        nomeProduto = list[i].getElementsByTagName("input")[0].value;
+        nomeProduto = nomeProduto.padEnd(30, "#")
+       
+        valor = list[i].getElementsByTagName("input")[1].value;
+
+        qtd = list[i].getElementsByTagName("input")[2].value;
+        qtd = qtd.toString().padStart(15, "$")
+        text += nomeProduto + " " + valor + " " + qtd + String.fromCharCode(13);
+        
+      }
+
+      text += "Valor Final: R$" + total
+      doc.text(text, 20, 20);
+      doc.save("ListaDeCompras.pdf");
+      doc.
+    }*/
+
+    const gerarPdf = () => {
+       const doc = new jsPDF();
+
+       doc.html(<h2>Teste</h2>)
+       doc.save("teste.pdf");
+    }
+
   return (
     <PageDefault>
       <MyDiv>
@@ -131,6 +151,9 @@ export default function ListaCompras() {
             </div>
           </ul>
 
+          <div id="teste">
+           
+          </div>
           <div className="valorTotal">
             <h3>Valor Total: R$ {total}</h3>
 
@@ -148,6 +171,11 @@ export default function ListaCompras() {
           <button onClick={delParagrafo} className="btn btn-danger">
             Deletar
           </button>
+
+           <button onClick={gerarPdf} className="btn btn-success">
+            Gerar PDF
+          </button>
+
         </div>
 
       </MyDiv>

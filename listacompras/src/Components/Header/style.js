@@ -9,8 +9,13 @@ export const MyHeader = styled.div`
   background-color: var(--dark-blue);
   padding-left: 70px;
   color: white;
-  
-  h3{
+
+  h3 {
     cursor: pointer;
+  }
+
+  @media (max-width: 600px) {
+   justify-content: center;
+   padding-left: 0px;
   }
 `;

@@ -19,4 +19,13 @@ export const MyCard = styled.div`
     width: 80%;
     margin-bottom: 10px;
   }
+
+  @media (max-width: 1280px) {
+    width: 80%;
+  }
+  @media (max-width: 800px) {
+    width: 100%;
+    border: 0px;
+    box-shadow: none;
+  }
 `;

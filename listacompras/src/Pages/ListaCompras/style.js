@@ -64,7 +64,7 @@ export const MyDiv = styled.div`
 
   .remover{
       margin-top: 20px;
-      margin-left: -55%;
+      margin-left: -50%;
       display: flex;
 
   }
@@ -78,5 +78,39 @@ export const MyDiv = styled.div`
       width: 5%;
       cursor: pointer;
       display: none;
+  }
+
+  @media(max-width: 760px)
+  {
+    .valorTotal{
+      width: 85%;
+    }
+    .valorTotal > h3 {
+      font-size: 1.5rem;
+    }
+
+
+  }
+
+  @media(max-width: 970px)
+  {
+    .addNew {
+      width: 80%;
+      margin-left: 0px;
+    }
+     .addNew > h5 {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(max-width: 600px)
+  {
+      .addNew {
+      width: 80%;
+    }
+    .addNew > h5 {
+      font-size: 1.2rem;
+      margin-top: 3px;
+    }
   }
 `;
