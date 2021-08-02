@@ -130,12 +130,6 @@ export default function ListaCompras() {
       doc.
     }*/
 
-    const gerarPdf = () => {
-       const doc = new jsPDF();
-
-       doc.html(<h2>Teste</h2>)
-       doc.save("teste.pdf");
-    }
 
   return (
     <PageDefault>
@@ -171,11 +165,6 @@ export default function ListaCompras() {
           <button onClick={delParagrafo} className="btn btn-danger">
             Deletar
           </button>
-
-           <button onClick={gerarPdf} className="btn btn-success">
-            Gerar PDF
-          </button>
-
         </div>
 
       </MyDiv>
